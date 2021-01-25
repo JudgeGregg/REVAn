@@ -1,0 +1,260 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://StaticBody.gd" type="Script" id=1]
+[ext_resource path="res://Anomaly.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Game.gd" type="Script" id=3]
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://audio/House In a Forest Loop.ogg" type="AudioStream" id=5]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.388235, 0.352941, 0.396078, 1 )
+
+[sub_resource type="CylinderMesh" id=2]
+material = SubResource( 1 )
+top_radius = 8.0
+bottom_radius = 8.0
+height = 0.001
+
+[sub_resource type="CubeMesh" id=4]
+
+[sub_resource type="CylinderMesh" id=3]
+
+[sub_resource type="DynamicFont" id=5]
+size = 64
+font_data = ExtResource( 4 )
+
+[sub_resource type="CanvasItemMaterial" id=9]
+
+[sub_resource type="Theme" id=10]
+
+[sub_resource type="DynamicFont" id=6]
+size = 22
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 4 )
+
+[sub_resource type="InputEventAction" id=11]
+action = "ui_select"
+
+[sub_resource type="ShortCut" id=12]
+shortcut = SubResource( 11 )
+
+[node name="Game" type="Node"]
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance" type="MeshInstance" parent="MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.03452, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0470247, 0, -9.08276 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0470247, 0, 9.10143 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.10033, 0, 0.133039 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Anomaly1" parent="MeshInstance" instance=ExtResource( 2 )]
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 5.61243, 1.1801, 3.10993 )
+
+[node name="Anomaly7" parent="MeshInstance" instance=ExtResource( 2 )]
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -5.48084, 1.1801, -3.25137 )
+
+[node name="Anomaly8" parent="MeshInstance" instance=ExtResource( 2 )]
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -3.2319, 1.1801, -5.7252 )
+
+[node name="Anomaly9" parent="MeshInstance" instance=ExtResource( 2 )]
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.0772533, 1.1801, -6.68903 )
+
+[node name="Anomaly10" parent="MeshInstance" instance=ExtResource( 2 )]
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 3.26244, 1.1801, -5.57836 )
+
+[node name="Anomaly11" parent="MeshInstance" instance=ExtResource( 2 )]
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 5.73174, 1.1801, -3.32303 )
+
+[node name="Anomaly12" parent="MeshInstance" instance=ExtResource( 2 )]
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 6.5028, 1.1801, 0.0001266 )
+
+[node name="Anomaly2" parent="MeshInstance" instance=ExtResource( 2 )]
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 3.361, 1.18, 5.706 )
+
+[node name="Anomaly3" parent="MeshInstance" instance=ExtResource( 2 )]
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.036, 1.18, 6.535 )
+
+[node name="Anomaly4" parent="MeshInstance" instance=ExtResource( 2 )]
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -3.561, 1.18, 5.622 )
+
+[node name="Anomaly5" parent="MeshInstance" instance=ExtResource( 2 )]
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -5.91674, 1.18, 3.2409 )
+
+[node name="Anomaly6" parent="MeshInstance" instance=ExtResource( 2 )]
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -6.78923, 1.18, 0.002 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.66108, 0.367224, 0 )
+script = ExtResource( 1 )
+
+[node name="Camera" type="Camera" parent="StaticBody"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0.449789, 0, 0 )
+cull_mask = 2148532223
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+visible = false
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="DestroyTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="FailedLabel" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -138.5
+margin_top = -39.0
+margin_right = 138.5
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 5 )
+text = "FAILED!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -139.5
+margin_top = -78.0
+margin_right = 139.5
+custom_fonts/font = SubResource( 5 )
+text = "Score: 0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextLabel" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -139.5
+margin_right = 139.5
+margin_bottom = 78.0
+custom_fonts/font = SubResource( 5 )
+text = "Next:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FirstMenu" type="Control" parent="."]
+material = SubResource( 9 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="FirstMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -2.0
+margin_bottom = -2.0
+color = Color( 0.415686, 0.133333, 0.133333, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="FirstMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Column" type="VBoxContainer" parent="FirstMenu/CenterContainer"]
+margin_left = 603.0
+margin_top = 441.0
+margin_right = 1317.0
+margin_bottom = 638.0
+alignment = 1
+
+[node name="Label" type="Label" parent="FirstMenu/CenterContainer/Column"]
+margin_right = 714.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 6 )
+text = "Welcome to Rapid Evaluation for Vision of Anomalies (REVAn)"
+align = 1
+
+[node name="Label2" type="Label" parent="FirstMenu/CenterContainer/Column"]
+margin_top = 31.0
+margin_right = 714.0
+margin_bottom = 58.0
+custom_fonts/font = SubResource( 6 )
+
+[node name="Label3" type="Label" parent="FirstMenu/CenterContainer/Column"]
+margin_top = 62.0
+margin_right = 714.0
+margin_bottom = 197.0
+custom_fonts/font = SubResource( 7 )
+text = "Rules of the Game:
+- You can't move, only look around by pressing and dragging RMB (right mouse button)
+- Every 2 seconds an anomaly will pop, with a hint shown on screen.
+- You have 2 seconds to align the camera with that anomaly, within a 5° angle
+- If you fail, you can keep playing, but score won't update
+- Press Space to play!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="FirstMenu"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -78.0
+margin_top = -150.0
+margin_right = 80.0
+margin_bottom = -106.0
+custom_fonts/font = SubResource( 8 )
+shortcut = SubResource( 12 )
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+[connection signal="timeout" from="DestroyTimer" to="." method="_on_DestroyTimer_timeout"]
+[connection signal="pressed" from="FirstMenu/Button" to="." method="_on_Button_pressed"]
