@@ -130,9 +130,6 @@ material/0 = null
 wait_time = 5.0
 one_shot = true
 
-[node name="DestroyTimer" type="Timer" parent="."]
-wait_time = 2.0
-
 [node name="DestroyTimer2" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true

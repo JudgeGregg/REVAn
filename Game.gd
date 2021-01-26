@@ -1,11 +1,10 @@
 extends Node
 
 var currentAnom: int = 0
-var oldAnom: int = 0
 var score: int = 0
 var failed: bool = false
-var array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
-var sampled
+var array: Array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
+var sampled: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,9 +14,9 @@ func _ready():
 	randomize()
 	
 func sample(list,amt):
-	var shuffled = list.duplicate()
+	var shuffled: Array = list.duplicate()
 	shuffled.shuffle()
-	var sampled_ = []
+	var sampled_: Array = []
 	for _i in range(amt):
 		sampled_.append( shuffled.pop_front() )
 	return sampled_
@@ -28,28 +27,28 @@ func _on_SpawnTimer_timeout():
 	for anom in sampled:
 		get_node("MeshInstance/Anomaly"+str(anom)).show()
 	currentAnom = sampled.pop_front()
-	var currentAnomLabel = get_currentAnomLabel(currentAnom)
+	var currentAnomLabel: String = get_currentAnomLabel(currentAnom)
 	$NextLabel.text = "Next: " + currentAnomLabel
 	$DestroyTimer2.start()
 	$DestroyTimer4.start()
 	$DestroyTimer6.start()
 	$DestroyTimer8.start()
 
-func get_currentAnomLabel(currentAnom):
+func get_currentAnomLabel(currentAnom_):
 	var currentAnomLabel: String
-	if currentAnom == 13:
+	if currentAnom_ == 13:
 		currentAnomLabel = "3i"
-	elif currentAnom == 14:
+	elif currentAnom_ == 14:
 		currentAnomLabel = "9i"
 	else:
-		currentAnomLabel = str(currentAnom) + "h"
+		currentAnomLabel = str(currentAnom_) + "h"
 	return currentAnomLabel
 
 func _on_DestroyTimer_timeout():
 	check_failed()
 	if len(sampled) > 0:
 		currentAnom = sampled.pop_front()
-		var currentAnomLabel = get_currentAnomLabel(currentAnom)
+		var currentAnomLabel: String = get_currentAnomLabel(currentAnom)
 		$NextLabel.text = "Next: " + currentAnomLabel
 	else:
 		$NextLabel.text = "Please wait..."
