@@ -1,7 +1,6 @@
 extends Node
 
 var currentAnom: int = 0
-var currentAnomLabel: String
 var oldAnom: int = 0
 var score: int = 0
 var failed: bool = false
@@ -29,7 +28,7 @@ func _on_SpawnTimer_timeout():
 	for anom in sampled:
 		get_node("MeshInstance/Anomaly"+str(anom)).show()
 	currentAnom = sampled.pop_front()
-	currentAnomLabel = get_currentAnomLabel(currentAnom)
+	var currentAnomLabel = get_currentAnomLabel(currentAnom)
 	$NextLabel.text = "Next: " + currentAnomLabel
 	$DestroyTimer2.start()
 	$DestroyTimer4.start()
@@ -37,18 +36,20 @@ func _on_SpawnTimer_timeout():
 	$DestroyTimer8.start()
 
 func get_currentAnomLabel(currentAnom):
+	var currentAnomLabel: String
 	if currentAnom == 13:
 		currentAnomLabel = "3i"
 	elif currentAnom == 14:
 		currentAnomLabel = "9i"
 	else:
 		currentAnomLabel = str(currentAnom) + "h"
+	return currentAnomLabel
 
 func _on_DestroyTimer_timeout():
 	check_failed()
 	if len(sampled) > 0:
 		currentAnom = sampled.pop_front()
-		currentAnomLabel = get_currentAnomLabel(currentAnom)
+		var currentAnomLabel = get_currentAnomLabel(currentAnom)
 		$NextLabel.text = "Next: " + currentAnomLabel
 	else:
 		$NextLabel.text = "Please wait..."
