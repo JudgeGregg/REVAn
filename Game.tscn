@@ -248,7 +248,7 @@ text = "Rules of the Game:
 - Repeat for the remaning anomalies
 - After all 4 anomalies disappeared, you have a 4 seconds break, then another round begins
 - If you fail, you can keep playing, but score won't update
-- Press Space to play!"
+- Press Space to play, and Esc to quit."
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -16,6 +16,8 @@ func _input(event):
 			dragging = false
 	if event is InputEventMouseMotion and dragging:
 		rotate_y(deg2rad(-event.relative.x) * mouse_sensitivity)
+	if Input.is_key_pressed(KEY_ESCAPE):
+		get_tree().quit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

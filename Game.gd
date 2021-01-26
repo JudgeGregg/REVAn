@@ -9,6 +9,7 @@ var sampled
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	OS.window_fullscreen = true
 	$FailedLabel.hide()
 	get_tree().call_group("anomalies", "hide")
 	randomize()
