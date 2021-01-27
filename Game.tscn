@@ -15,26 +15,26 @@ top_radius = 8.0
 bottom_radius = 8.0
 height = 0.001
 
-[sub_resource type="CubeMesh" id=4]
+[sub_resource type="CubeMesh" id=3]
 
-[sub_resource type="CylinderMesh" id=3]
+[sub_resource type="CylinderMesh" id=4]
 
 [sub_resource type="DynamicFont" id=5]
 size = 64
 font_data = ExtResource( 4 )
 
-[sub_resource type="CanvasItemMaterial" id=9]
+[sub_resource type="CanvasItemMaterial" id=6]
 
-[sub_resource type="Theme" id=10]
+[sub_resource type="Theme" id=7]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=8]
 size = 22
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=10]
 font_data = ExtResource( 4 )
 
 [sub_resource type="InputEventAction" id=11]
@@ -52,22 +52,22 @@ material/0 = null
 
 [node name="MeshInstance" type="MeshInstance" parent="MeshInstance"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.03452, 0, 0 )
-mesh = SubResource( 4 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="MeshInstance2" type="MeshInstance" parent="MeshInstance"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0470247, 0, -9.08276 )
-mesh = SubResource( 4 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="MeshInstance3" type="MeshInstance" parent="MeshInstance"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0470247, 0, 9.10143 )
-mesh = SubResource( 4 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="MeshInstance4" type="MeshInstance" parent="MeshInstance"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.10033, 0, 0.133039 )
-mesh = SubResource( 4 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Anomaly1" parent="MeshInstance" instance=ExtResource( 2 )]
@@ -83,7 +83,7 @@ transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -3.2319, 1.1801, -5.7252
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.0772533, 1.1801, -6.68903 )
 
 [node name="Anomaly14" parent="MeshInstance" instance=ExtResource( 2 )]
-transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.0772533, 1.1801, -3.81546 )
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.0772533, 1.1801, -4.69512 )
 
 [node name="Anomaly10" parent="MeshInstance" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 3.26244, 1.1801, -5.57836 )
@@ -101,7 +101,7 @@ transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 3.361, 1.18, 5.706 )
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.036, 1.18, 6.535 )
 
 [node name="Anomaly13" parent="MeshInstance" instance=ExtResource( 2 )]
-transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.036, 1.18, 3.60797 )
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.036, 1.18, 4.56413 )
 
 [node name="Anomaly4" parent="MeshInstance" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -3.561, 1.18, 5.622 )
@@ -123,7 +123,7 @@ cull_mask = 2148532223
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
 visible = false
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = null
 
 [node name="SpawnTimer" type="Timer" parent="."]
@@ -194,10 +194,10 @@ __meta__ = {
 }
 
 [node name="FirstMenu" type="Control" parent="."]
-material = SubResource( 9 )
+material = SubResource( 6 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = SubResource( 10 )
+theme = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -229,7 +229,7 @@ alignment = 1
 [node name="Label" type="Label" parent="FirstMenu/CenterContainer/Column"]
 margin_right = 800.0
 margin_bottom = 27.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "Welcome to Rapid Evaluation for Vision of Anomalies (REVAn)"
 align = 1
 
@@ -237,13 +237,13 @@ align = 1
 margin_top = 31.0
 margin_right = 800.0
 margin_bottom = 58.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 
 [node name="Label3" type="Label" parent="FirstMenu/CenterContainer/Column"]
 margin_top = 62.0
 margin_right = 800.0
 margin_bottom = 243.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 text = "Rules of the Game:
 - You can't move, only look around by pressing and dragging RMB (right mouse button)
 - After 4 seconds, 4 anomalies will pop, with a hint shown on screen, telling you where to align to
@@ -265,7 +265,7 @@ margin_left = -78.0
 margin_top = -150.0
 margin_right = 80.0
 margin_bottom = -106.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 10 )
 shortcut = SubResource( 12 )
 text = "Start"
 __meta__ = {
