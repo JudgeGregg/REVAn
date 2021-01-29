@@ -25,7 +25,7 @@ func _on_SpawnTimer_timeout():
 	array.shuffle()
 	sampled = sample(array, 4)
 	for anom in sampled:
-		get_node("MeshInstance/Anomaly"+str(anom)).show()
+		get_node("Ground/Anomaly"+str(anom)).show()
 	currentAnom = sampled.pop_front()
 	var currentAnomLabel: String = get_currentAnomLabel(currentAnom)
 	$NextLabel.text = "Next: " + currentAnomLabel
@@ -56,16 +56,15 @@ func _on_DestroyTimer_timeout():
 
 func check_failed():
 	$FailedLabel.hide()
-	get_node("MeshInstance/Anomaly"+str(currentAnom)).hide()
-	var anom = get_node("MeshInstance/Anomaly"+str(currentAnom))
-	var player = $StaticBody
+	get_node("Ground/Anomaly"+str(currentAnom)).hide()
+	var anom = get_node("Ground/Anomaly"+str(currentAnom))
+	var player = $Player
 	var player_transform_2d = Vector2(player.transform.basis.x.x, player.transform.basis.x.z).normalized()
 	var direction = anom.transform.origin - player.transform.origin
 	var direction_2d = Vector2(direction.x, direction.z)
 	var a = Vector2(direction_2d.normalized().x, direction_2d.normalized().y)
 	var b = Vector2(player_transform_2d.x, player_transform_2d.y)
 	var delta = rad2deg(acos(a.dot(b)))
-	print(delta)
 	if delta > 5.5:
 		failed = true;
 		$FailedLabel.text = "FAILED! (" + str(round(delta)) + "°)"

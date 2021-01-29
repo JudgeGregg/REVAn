@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=2]
 
-[ext_resource path="res://StaticBody.gd" type="Script" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Anomaly.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game.gd" type="Script" id=3]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=4]
@@ -17,7 +17,7 @@ height = 0.001
 
 [sub_resource type="CubeMesh" id=3]
 
-[sub_resource type="CylinderMesh" id=4]
+[sub_resource type="SphereShape" id=15]
 
 [sub_resource type="DynamicFont" id=5]
 size = 64
@@ -54,85 +54,82 @@ proximity_fade_distance = 1.0
 [node name="Game" type="Node"]
 script = ExtResource( 3 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
+[node name="Ground" type="MeshInstance" parent="."]
 mesh = SubResource( 2 )
 material/0 = null
 
-[node name="MeshInstance" type="MeshInstance" parent="MeshInstance"]
+[node name="Corner" type="MeshInstance" parent="Ground"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.03452, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = null
 
-[node name="MeshInstance2" type="MeshInstance" parent="MeshInstance"]
+[node name="Corner 2" type="MeshInstance" parent="Ground"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0470247, 0, -9.08276 )
 mesh = SubResource( 3 )
 material/0 = null
 
-[node name="MeshInstance3" type="MeshInstance" parent="MeshInstance"]
+[node name="Corner3" type="MeshInstance" parent="Ground"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0470247, 0, 9.10143 )
 mesh = SubResource( 3 )
 material/0 = null
 
-[node name="MeshInstance4" type="MeshInstance" parent="MeshInstance"]
+[node name="Corner4" type="MeshInstance" parent="Ground"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.10033, 0, 0.133039 )
 mesh = SubResource( 3 )
 material/0 = null
 
-[node name="Anomaly1" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly1" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 5.61243, 1.1801, 3.10993 )
 
-[node name="Anomaly7" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly7" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -5.48084, 1.1801, -3.25137 )
 
-[node name="Anomaly8" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly8" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -3.2319, 1.1801, -5.7252 )
 
-[node name="Anomaly9" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly9" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.0772533, 1.1801, -6.68903 )
 
-[node name="Anomaly14" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly14" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.0772533, 1.1801, -4.69512 )
 
-[node name="Anomaly10" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly10" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 3.26244, 1.1801, -5.57836 )
 
-[node name="Anomaly11" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly11" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 5.73174, 1.1801, -3.32303 )
 
-[node name="Anomaly12" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly12" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 6.5028, 1.1801, 0.0001266 )
 
-[node name="Anomaly2" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly2" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 3.361, 1.18, 5.706 )
 
-[node name="Anomaly3" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly3" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.036, 1.18, 6.535 )
 
-[node name="Anomaly13" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly13" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.036, 1.18, 4.56413 )
 
-[node name="Anomaly4" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly4" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -3.561, 1.18, 5.622 )
 
-[node name="Anomaly5" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly5" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -5.91674, 1.18, 3.2409 )
 
-[node name="Anomaly6" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly6" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -6.78923, 1.18, 0.002 )
 
-[node name="StaticBody" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.66108, 0.367224, 0 )
+[node name="Player" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.21, 0.367, 0 )
 script = ExtResource( 1 )
 
-[node name="Camera" type="Camera" parent="StaticBody"]
-transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0.449789, 0, 0 )
+[node name="Camera" type="Camera" parent="Player"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 0, 0 )
 cull_mask = 2148532223
 
-[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
-visible = false
-mesh = SubResource( 4 )
-material/0 = null
+[node name="CollisionShape" type="CollisionShape" parent="Player"]
+shape = SubResource( 15 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
