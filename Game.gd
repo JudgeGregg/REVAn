@@ -1,7 +1,7 @@
 extends Node
 
 var currentAnom: int = 0
-var score: int = 0
+export var score: int = 0
 export var failed: bool = false
 var array: Array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
 var sampled: Array = []

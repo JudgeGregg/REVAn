@@ -20,6 +20,10 @@ func _input(event):
 		rotate_y(deg2rad(-event.relative.x) * mouse_sensitivity)
 	if Input.is_key_pressed(KEY_ESCAPE):
 		get_tree().quit()
+	if Input.is_key_pressed(KEY_R):
+		get_tree().get_root().get_node("Game").score = 0
+		get_tree().get_root().get_node("Game/ScoreLabel").text = "Score: 0"
+		get_tree().get_root().get_node("Game").failed = false
 
 func _physics_process(delta):
 	process_input(delta)
