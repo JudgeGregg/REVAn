@@ -57,7 +57,7 @@ func process_movement(delta):
 	dir.x = dir.x * move_speed * delta
 	dir.z = dir.z * move_speed * delta
 	if move_and_collide(dir):
-		get_tree().get_root().get_node("Game").failed = true
+		get_tree().get_root().get_node("Game").score -= 1
 		get_tree().get_root().get_node("Game/FailedLabel").text = "COLLISION!"
 		get_tree().get_root().get_node("Game/FailedLabel").show()
-		print("FAILED")
+		get_tree().get_root().get_node("Game/ScoreLabel").text = "Score: " + str(get_tree().get_root().get_node("Game").score)
