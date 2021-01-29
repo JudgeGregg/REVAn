@@ -1,6 +1,6 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://StaticBody.gd" type="Script" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Anomaly.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game.gd" type="Script" id=3]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=4]
@@ -17,7 +17,7 @@ height = 0.001
 
 [sub_resource type="CubeMesh" id=3]
 
-[sub_resource type="CylinderMesh" id=4]
+[sub_resource type="SphereShape" id=15]
 
 [sub_resource type="DynamicFont" id=5]
 size = 64
@@ -43,88 +43,96 @@ action = "ui_select"
 [sub_resource type="ShortCut" id=12]
 shortcut = SubResource( 11 )
 
+[sub_resource type="SphereMesh" id=13]
+
+[sub_resource type="SpatialMaterial" id=14]
+params_blend_mode = 1
+albedo_color = Color( 0.776471, 0.65098, 0.0823529, 1 )
+proximity_fade_enable = true
+proximity_fade_distance = 1.0
+
+[sub_resource type="CylinderShape" id=16]
+
 [node name="Game" type="Node"]
 script = ExtResource( 3 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
+[node name="Ground" type="MeshInstance" parent="."]
 mesh = SubResource( 2 )
 material/0 = null
 
-[node name="MeshInstance" type="MeshInstance" parent="MeshInstance"]
+[node name="Corner" type="MeshInstance" parent="Ground"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.03452, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = null
 
-[node name="MeshInstance2" type="MeshInstance" parent="MeshInstance"]
+[node name="Corner 2" type="MeshInstance" parent="Ground"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0470247, 0, -9.08276 )
 mesh = SubResource( 3 )
 material/0 = null
 
-[node name="MeshInstance3" type="MeshInstance" parent="MeshInstance"]
+[node name="Corner3" type="MeshInstance" parent="Ground"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0470247, 0, 9.10143 )
 mesh = SubResource( 3 )
 material/0 = null
 
-[node name="MeshInstance4" type="MeshInstance" parent="MeshInstance"]
+[node name="Corner4" type="MeshInstance" parent="Ground"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.10033, 0, 0.133039 )
 mesh = SubResource( 3 )
 material/0 = null
 
-[node name="Anomaly1" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly1" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 5.61243, 1.1801, 3.10993 )
 
-[node name="Anomaly7" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly7" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -5.48084, 1.1801, -3.25137 )
 
-[node name="Anomaly8" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly8" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -3.2319, 1.1801, -5.7252 )
 
-[node name="Anomaly9" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly9" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.0772533, 1.1801, -6.68903 )
 
-[node name="Anomaly14" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly14" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.0772533, 1.1801, -4.69512 )
 
-[node name="Anomaly10" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly10" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 3.26244, 1.1801, -5.57836 )
 
-[node name="Anomaly11" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly11" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 5.73174, 1.1801, -3.32303 )
 
-[node name="Anomaly12" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly12" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 6.5028, 1.1801, 0.0001266 )
 
-[node name="Anomaly2" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly2" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 3.361, 1.18, 5.706 )
 
-[node name="Anomaly3" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly3" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.036, 1.18, 6.535 )
 
-[node name="Anomaly13" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly13" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.036, 1.18, 4.56413 )
 
-[node name="Anomaly4" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly4" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -3.561, 1.18, 5.622 )
 
-[node name="Anomaly5" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly5" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -5.91674, 1.18, 3.2409 )
 
-[node name="Anomaly6" parent="MeshInstance" instance=ExtResource( 2 )]
+[node name="Anomaly6" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -6.78923, 1.18, 0.002 )
 
-[node name="StaticBody" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.66108, 0.367224, 0 )
+[node name="Player" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.21, 0.367, 0 )
 script = ExtResource( 1 )
 
-[node name="Camera" type="Camera" parent="StaticBody"]
-transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0.449789, 0, 0 )
+[node name="Camera" type="Camera" parent="Player"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 0, 0 )
 cull_mask = 2148532223
 
-[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
-visible = false
-mesh = SubResource( 4 )
-material/0 = null
+[node name="CollisionShape" type="CollisionShape" parent="Player"]
+transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0 )
+shape = SubResource( 15 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -147,7 +155,6 @@ wait_time = 8.0
 one_shot = true
 
 [node name="FailedLabel" type="Label" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -164,7 +171,6 @@ __meta__ = {
 }
 
 [node name="ScoreLabel" type="Label" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -180,11 +186,10 @@ __meta__ = {
 }
 
 [node name="NextLabel" type="Label" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -139.5
-margin_right = 139.5
+margin_left = -219.0
+margin_right = 219.0
 margin_bottom = 78.0
 custom_fonts/font = SubResource( 5 )
 text = "Please wait..."
@@ -205,8 +210,6 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="FirstMenu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -2.0
-margin_bottom = -2.0
 color = Color( 0.415686, 0.133333, 0.133333, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -221,9 +224,9 @@ __meta__ = {
 
 [node name="Column" type="VBoxContainer" parent="FirstMenu/CenterContainer"]
 margin_left = 560.0
-margin_top = 418.0
+margin_top = 407.0
 margin_right = 1360.0
-margin_bottom = 661.0
+margin_bottom = 673.0
 alignment = 1
 
 [node name="Label" type="Label" parent="FirstMenu/CenterContainer/Column"]
@@ -242,15 +245,16 @@ custom_fonts/font = SubResource( 8 )
 [node name="Label3" type="Label" parent="FirstMenu/CenterContainer/Column"]
 margin_top = 62.0
 margin_right = 800.0
-margin_bottom = 243.0
+margin_bottom = 266.0
 custom_fonts/font = SubResource( 9 )
 text = "Rules of the Game:
-- You can't move, only look around by pressing and dragging RMB (right mouse button)
+- WSAD to mouve, look around by pressing and dragging RMB (right mouse button)
 - After 4 seconds, 4 anomalies will pop, with a hint shown on screen, telling you where to align to
 - You have 2 seconds to align the camera with that anomaly's *center*, within a 5° angle
 - Repeat for the remaning anomalies
 - After all 4 anomalies disappeared, you have a 4 seconds break, then another round begins
-- If you fail, you can keep playing, but score won't update
+- If you fail, you can keep playing, but score won't update (press R to Reset score)
+- Hitting the core or an anomaly while moving will lower your score
 - Press Space to play, and Esc to quit."
 __meta__ = {
 "_edit_use_anchors_": false
@@ -277,6 +281,17 @@ stream = ExtResource( 5 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.16553, 0.986205, 0, -0.986205, 0.16553, 0, 15.4708, 0 )
+
+[node name="Core" type="MeshInstance" parent="."]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
+mesh = SubResource( 13 )
+material/0 = SubResource( 14 )
+
+[node name="KinematicBody" type="KinematicBody" parent="Core"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Core/KinematicBody"]
+transform = Transform( 0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0 )
+shape = SubResource( 16 )
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="DestroyTimer2" to="." method="_on_DestroyTimer_timeout"]
 [connection signal="timeout" from="DestroyTimer4" to="." method="_on_DestroyTimer_timeout"]

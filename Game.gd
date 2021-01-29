@@ -1,8 +1,8 @@
 extends Node
 
 var currentAnom: int = 0
-var score: int = 0
-var failed: bool = false
+export var score: int = 0
+export var failed: bool = false
 var array: Array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
 var sampled: Array = []
 
@@ -25,7 +25,10 @@ func _on_SpawnTimer_timeout():
 	array.shuffle()
 	sampled = sample(array, 4)
 	for anom in sampled:
-		get_node("MeshInstance/Anomaly"+str(anom)).show()
+		var anom_ = get_node("Ground/Anomaly"+str(anom))
+		var collisionShape = get_node("Ground/Anomaly"+str(anom)+"/KinematicBody/CollisionShape")
+		anom_.show()
+		collisionShape.disabled = false
 	currentAnom = sampled.pop_front()
 	var currentAnomLabel: String = get_currentAnomLabel(currentAnom)
 	$NextLabel.text = "Next: " + currentAnomLabel
@@ -56,16 +59,17 @@ func _on_DestroyTimer_timeout():
 
 func check_failed():
 	$FailedLabel.hide()
-	get_node("MeshInstance/Anomaly"+str(currentAnom)).hide()
-	var anom = get_node("MeshInstance/Anomaly"+str(currentAnom))
-	var player = $StaticBody
+	var anom = get_node("Ground/Anomaly"+str(currentAnom))
+	var collisionShape = get_node("Ground/Anomaly"+str(currentAnom)+"/KinematicBody/CollisionShape")
+	anom.hide()
+	collisionShape.disabled = true
+	var player = $Player
 	var player_transform_2d = Vector2(player.transform.basis.x.x, player.transform.basis.x.z).normalized()
 	var direction = anom.transform.origin - player.transform.origin
 	var direction_2d = Vector2(direction.x, direction.z)
 	var a = Vector2(direction_2d.normalized().x, direction_2d.normalized().y)
 	var b = Vector2(player_transform_2d.x, player_transform_2d.y)
 	var delta = rad2deg(acos(a.dot(b)))
-	print(delta)
 	if delta > 5.5:
 		failed = true;
 		$FailedLabel.text = "FAILED! (" + str(round(delta)) + "°)"
