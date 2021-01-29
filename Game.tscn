@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Anomaly.tscn" type="PackedScene" id=2]
@@ -50,6 +50,8 @@ params_blend_mode = 1
 albedo_color = Color( 0.776471, 0.65098, 0.0823529, 1 )
 proximity_fade_enable = true
 proximity_fade_distance = 1.0
+
+[sub_resource type="CylinderShape" id=16]
 
 [node name="Game" type="Node"]
 script = ExtResource( 3 )
@@ -129,6 +131,7 @@ transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 0, 0
 cull_mask = 2148532223
 
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
+transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0 )
 shape = SubResource( 15 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
@@ -287,6 +290,12 @@ transform = Transform( 1, 0, 0, 0, 0.16553, 0.986205, 0, -0.986205, 0.16553, 0, 
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
 mesh = SubResource( 13 )
 material/0 = SubResource( 14 )
+
+[node name="KinematicBody" type="KinematicBody" parent="Core"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Core/KinematicBody"]
+transform = Transform( 0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0 )
+shape = SubResource( 16 )
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="DestroyTimer2" to="." method="_on_DestroyTimer_timeout"]
 [connection signal="timeout" from="DestroyTimer4" to="." method="_on_DestroyTimer_timeout"]

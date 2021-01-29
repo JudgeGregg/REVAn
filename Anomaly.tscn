@@ -1,12 +1,21 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [sub_resource type="SphereMesh" id=1]
 
 [sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.737255, 0.0941176, 0.592157, 1 )
 
+[sub_resource type="CylinderShape" id=3]
+height = 5.0
+
 [node name="Anomaly" type="MeshInstance" groups=[
 "anomalies",
 ]]
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
+
+[node name="KinematicBody" type="KinematicBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
+shape = SubResource( 3 )
+disabled = true
