@@ -1,10 +1,12 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Anomaly.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game.gd" type="Script" id=3]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://audio/House In a Forest Loop.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=6]
+[ext_resource path="res://img/12.png" type="Texture" id=8]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.388235, 0.352941, 0.396078, 1 )
@@ -15,43 +17,58 @@ top_radius = 8.0
 bottom_radius = 8.0
 height = 0.001
 
-[sub_resource type="CubeMesh" id=3]
+[sub_resource type="PlaneMesh" id=3]
 
-[sub_resource type="SphereShape" id=15]
+[sub_resource type="SpatialMaterial" id=4]
+albedo_texture = ExtResource( 8 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="BoxShape" id=5]
+
+[sub_resource type="CubeMesh" id=6]
+
+[sub_resource type="BoxShape" id=7]
+
+[sub_resource type="CubeMesh" id=8]
+
+[sub_resource type="BoxShape" id=9]
+
+[sub_resource type="BoxShape" id=10]
+
+[sub_resource type="SphereShape" id=11]
+
+[sub_resource type="DynamicFont" id=12]
 size = 64
 font_data = ExtResource( 4 )
 
-[sub_resource type="CanvasItemMaterial" id=6]
+[sub_resource type="CanvasItemMaterial" id=13]
 
-[sub_resource type="Theme" id=7]
+[sub_resource type="Theme" id=14]
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=15]
 size = 22
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=16]
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=17]
 font_data = ExtResource( 4 )
 
-[sub_resource type="InputEventAction" id=11]
+[sub_resource type="InputEventAction" id=18]
 action = "ui_select"
 
-[sub_resource type="ShortCut" id=12]
-shortcut = SubResource( 11 )
+[sub_resource type="ShortCut" id=19]
+shortcut = SubResource( 18 )
 
-[sub_resource type="SphereMesh" id=13]
+[sub_resource type="SphereMesh" id=20]
 
-[sub_resource type="SpatialMaterial" id=14]
+[sub_resource type="SpatialMaterial" id=21]
 params_blend_mode = 1
 albedo_color = Color( 0.776471, 0.65098, 0.0823529, 1 )
 proximity_fade_enable = true
 proximity_fade_distance = 1.0
 
-[sub_resource type="CylinderShape" id=16]
+[sub_resource type="CylinderShape" id=22]
 
 [node name="Game" type="Node"]
 script = ExtResource( 3 )
@@ -61,24 +78,45 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="Corner" type="MeshInstance" parent="Ground"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.03452, 0, 0 )
+transform = Transform( -2.44381e-07, -1.5, 0, -2.44381e-07, 3.98147e-14, -1.5, 1.5, -2.44381e-07, -2.44381e-07, 7.97535, 1.17235, -0.243569 )
 mesh = SubResource( 3 )
-material/0 = null
+material/0 = SubResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="Ground/Corner"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/Corner/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 0.12, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 5 )
 
 [node name="Corner 2" type="MeshInstance" parent="Ground"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0470247, 0, -9.08276 )
-mesh = SubResource( 3 )
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.0470247, 0, -9.31896 )
+mesh = SubResource( 6 )
 material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Ground/Corner 2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/Corner 2/StaticBody"]
+shape = SubResource( 7 )
 
 [node name="Corner3" type="MeshInstance" parent="Ground"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0470247, 0, 9.10143 )
-mesh = SubResource( 3 )
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.0206337, 0, 9.18262 )
+mesh = SubResource( 8 )
 material/0 = null
 
+[node name="StaticBody" type="StaticBody" parent="Ground/Corner3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/Corner3/StaticBody"]
+shape = SubResource( 9 )
+
 [node name="Corner4" type="MeshInstance" parent="Ground"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.10033, 0, 0.133039 )
-mesh = SubResource( 3 )
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -9.31684, 0, -0.00227642 )
+mesh = SubResource( 6 )
 material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Ground/Corner4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/Corner4/StaticBody"]
+shape = SubResource( 10 )
 
 [node name="Anomaly1" parent="Ground" instance=ExtResource( 2 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 5.61243, 1.1801, 3.10993 )
@@ -120,7 +158,31 @@ transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -3.561, 1.18, 5.622 )
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -5.91674, 1.18, 3.2409 )
 
 [node name="Anomaly6" parent="Ground" instance=ExtResource( 2 )]
-transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -6.78923, 1.18, 0.002 )
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -6.789, 1.18, 0 )
+
+[node name="Wall" parent="Ground" instance=ExtResource( 6 )]
+transform = Transform( 2.23194, 0, -0.450504, 0, 1, 0, 1.12626, 0, 0.892775, 3.32605, 0.5, -6.86088 )
+
+[node name="Wall2" parent="Ground" instance=ExtResource( 6 )]
+transform = Transform( 1.21999, 0, -0.872846, 0, 1, 0, 2.18211, 0, 0.487997, 6.67371, 0.5, -3.68512 )
+
+[node name="Wall3" parent="Ground" instance=ExtResource( 6 )]
+transform = Transform( -1.11862, 0, -0.89431, 0, 1, 0, 2.23578, 0, -0.447447, 6.78287, 0.5, 3.28536 )
+
+[node name="Wall4" parent="Ground" instance=ExtResource( 6 )]
+transform = Transform( -2.22352, 0, -0.457113, 0, 1, 0, 1.14278, 0, -0.889408, 3.46885, 0.5, 6.67558 )
+
+[node name="Wall5" parent="Ground" instance=ExtResource( 6 )]
+transform = Transform( -2.22803, 0, 0.453586, 0, 1, 0, -1.13397, 0, -0.891212, -3.4199, 0.5, 6.69702 )
+
+[node name="Wall6" parent="Ground" instance=ExtResource( 6 )]
+transform = Transform( -1.1655, 0, 0.884679, 0, 1, 0, -2.2117, 0, -0.466201, -6.768, 0.5, 3.404 )
+
+[node name="Wall7" parent="Ground" instance=ExtResource( 6 )]
+transform = Transform( 1.22829, 0, 0.870982, 0, 1, 0, -2.17746, 0, 0.491315, -6.62188, 0.5, -3.52869 )
+
+[node name="Wall8" parent="Ground" instance=ExtResource( 6 )]
+transform = Transform( 2.21395, 0, 0.464486, 0, 1, 0, -1.16122, 0, 0.88558, -3.24108, 0.5, -6.81459 )
 
 [node name="Player" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.21, 0.367, 0 )
@@ -132,7 +194,7 @@ cull_mask = 2148532223
 
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
 transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0 )
-shape = SubResource( 15 )
+shape = SubResource( 11 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -163,7 +225,7 @@ margin_left = -138.5
 margin_top = -39.0
 margin_right = 138.5
 margin_bottom = 39.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 12 )
 text = "FAILED!"
 align = 1
 __meta__ = {
@@ -178,7 +240,7 @@ anchor_bottom = 1.0
 margin_left = -139.5
 margin_top = -78.0
 margin_right = 139.5
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 12 )
 text = "Score: 0"
 align = 1
 __meta__ = {
@@ -191,7 +253,7 @@ anchor_right = 0.5
 margin_left = -219.0
 margin_right = 219.0
 margin_bottom = 78.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 12 )
 text = "Please wait..."
 align = 1
 __meta__ = {
@@ -199,10 +261,10 @@ __meta__ = {
 }
 
 [node name="FirstMenu" type="Control" parent="."]
-material = SubResource( 6 )
+material = SubResource( 13 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = SubResource( 7 )
+theme = SubResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -232,7 +294,7 @@ alignment = 1
 [node name="Label" type="Label" parent="FirstMenu/CenterContainer/Column"]
 margin_right = 800.0
 margin_bottom = 27.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 15 )
 text = "Welcome to Rapid Evaluation for Vision of Anomalies (REVAn)"
 align = 1
 
@@ -240,13 +302,13 @@ align = 1
 margin_top = 31.0
 margin_right = 800.0
 margin_bottom = 58.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 15 )
 
 [node name="Label3" type="Label" parent="FirstMenu/CenterContainer/Column"]
 margin_top = 62.0
 margin_right = 800.0
 margin_bottom = 266.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 16 )
 text = "Rules of the Game:
 - WSAD to mouve, look around by pressing and dragging RMB (right mouse button)
 - After 4 seconds, 4 anomalies will pop, with a hint shown on screen, telling you where to align to
@@ -269,8 +331,8 @@ margin_left = -78.0
 margin_top = -150.0
 margin_right = 80.0
 margin_bottom = -106.0
-custom_fonts/font = SubResource( 10 )
-shortcut = SubResource( 12 )
+custom_fonts/font = SubResource( 17 )
+shortcut = SubResource( 19 )
 text = "Start"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -284,14 +346,14 @@ transform = Transform( 1, 0, 0, 0, 0.16553, 0.986205, 0, -0.986205, 0.16553, 0, 
 
 [node name="Core" type="MeshInstance" parent="."]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
-mesh = SubResource( 13 )
-material/0 = SubResource( 14 )
+mesh = SubResource( 20 )
+material/0 = SubResource( 21 )
 
 [node name="KinematicBody" type="KinematicBody" parent="Core"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Core/KinematicBody"]
 transform = Transform( 0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0 )
-shape = SubResource( 16 )
+shape = SubResource( 22 )
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="DestroyTimer2" to="." method="_on_DestroyTimer_timeout"]
 [connection signal="timeout" from="DestroyTimer4" to="." method="_on_DestroyTimer_timeout"]
