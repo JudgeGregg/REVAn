@@ -310,7 +310,7 @@ margin_right = 800.0
 margin_bottom = 266.0
 custom_fonts/font = SubResource( 16 )
 text = "Rules of the Game:
-- WSAD to mouve, look around by pressing and dragging RMB (right mouse button)
+- WSAD to move, look around by pressing and dragging RMB (right mouse button)
 - After 4 seconds, 4 anomalies will pop, with a hint shown on screen, telling you where to align to
 - You have 2 seconds to align the camera with that anomaly's *center*, within a 5° angle
 - Repeat for the remaning anomalies
