@@ -8,7 +8,7 @@ Mimics the phase 4 of the last boss from Temple of Sacrifice
 REVAn stands for Rapid Evaluation for Vision of Anomalies
 
 ## How can I get it?
-Check out the releases page (exe are for win10-64 bits)
+Check out the [releases](https://github.com/JudgeGregg/REVAn/releases) page (exe are for win10-64 bits)
 
 ## How do I play?
 Rules of the Game:
