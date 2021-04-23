@@ -1,8 +1,12 @@
 # REVAn
 Trainer for Revan boss fight :)
 
+
 ## What is it?
 Mimics the phase 4 of the last boss from Temple of Sacrifice
+
+## How does it look like?
+![Screenshot](/screens/revan.png)
 
 ## What does REVAn stand for?
 REVAn stands for Rapid Evaluation for Vision of Anomalies
